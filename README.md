@@ -7,7 +7,6 @@ This food delivery web application inspired by Lieferando was generated with [An
 - 🍔 Restaurant listings & food menu
 - 🛒 Cart system with real-time updates
 - 🔐 User authentication (email & Google)
-- 📦 Order tracking and delivery status
 - 🌐 Responsive UI using Tailwind CSS
 - 🔥 Backend powered by Firebase (Auth, Firestore, Storage)
 
