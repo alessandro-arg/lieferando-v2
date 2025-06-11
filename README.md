@@ -1,14 +1,36 @@
-# LieferandoV2
+# 🚚 Lieferando Clone (Angular 17+)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+This food delivery web application inspired by Lieferando was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
 
-## Development server
+## ⚙️ Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- 🍔 Restaurant listings & food menu
+- 🛒 Cart system with real-time updates
+- 🔐 User authentication (email & Google)
+- 📦 Order tracking and delivery status
+- 🌐 Responsive UI using Tailwind CSS
+- 🔥 Backend powered by Firebase (Auth, Firestore, Storage)
 
-## Code scaffolding
+## 🚀 Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Angular 17 (Standalone Components)](https://angular.dev/)
+- [Tailwind CSS v4.1](https://tailwindcss.com/)
+- [Firebase](https://firebase.google.com/)
+- [AngularFire](https://github.com/angular/angularfire)
+- [RxJS](https://rxjs.dev/)
+
+## 🛡️ Environment Setup
+
+> ⚠️ Your Firebase API keys should be stored in `src/environments/environment.ts` (excluded from version control).
+
+```ts
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: "YOUR_API_KEY",
+    // other config
+  }
+};
 
 ## Build
 
@@ -25,3 +47,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
