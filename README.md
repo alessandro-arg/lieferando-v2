@@ -13,7 +13,7 @@ This food delivery web application inspired by Lieferando was generated with [An
 ## 🚀 Tech Stack
 
 - [Angular 17 (Standalone Components)](https://angular.dev/)
-- [Tailwind CSS v4.1](https://tailwindcss.com/)
+- [Material Design 17](https://v17.material.angular.dev/)
 - [Firebase](https://firebase.google.com/)
 - [AngularFire](https://github.com/angular/angularfire)
 - [RxJS](https://rxjs.dev/)
