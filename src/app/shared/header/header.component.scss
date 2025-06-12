@@ -10,14 +10,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+}
+
+.right {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   img {
     height: 48px;
   }
-}
-
-.language-btn {
-  position: relative;
 }

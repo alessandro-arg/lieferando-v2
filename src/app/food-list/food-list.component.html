@@ -1,0 +1,18 @@
+<div *ngIf="loading" class="text-center my-8">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="food-grid" *ngIf="!loading">
+  <mat-card *ngFor="let item of foodItems" class="food-card">
+    <img mat-card-image [src]="item.image" alt="{{ item.title }}" />
+    <div class="description">
+      <mat-card-title>{{ item.title }}</mat-card-title>
+      <mat-card-content>
+        <p [innerHTML]="(item.summary | slice : 0 : 120) + '...'"></p>
+        <p class="price">
+          Estimated: ${{ item.pricePerServing / 100 | number : "1.2-2" }}
+        </p>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

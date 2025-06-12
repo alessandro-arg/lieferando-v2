@@ -1,0 +1,24 @@
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.food-card {
+  max-width: 100%;
+}
+
+.price {
+  font-weight: bold;
+  color: green;
+  margin-top: 8px;
+}
+
+.description {
+  padding: 10px 15px;
+}
+
+.mat-mdc-card-content {
+  padding: 10px 0 !important;
+}
