@@ -7,8 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FoodListComponent } from './food-list/food-list.component';
-import { environment } from '../environments/environment';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +20,8 @@ import { environment } from '../environments/environment';
     MatDialogModule,
     MatTooltipModule,
     MatButtonModule,
-    FoodListComponent,
+    FooterComponent,
+    RouterOutlet,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
