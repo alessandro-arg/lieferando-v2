@@ -1,16 +1,58 @@
-<form [formGroup]="form" (ngSubmit)="login()">
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" />
-  </mat-form-field>
+<mat-card class="register-card">
+  <h2>Log in</h2>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" formControlName="password" />
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit">Login</button>
-  <button mat-stroked-button (click)="loginWithGoogle()">
-    Login with Google
+  <button
+    class="google-btn"
+    (click)="loginWithGoogle()"
+    [disabled]="isLoggingIn"
+  >
+    <img src="../../assets/img/google-logo.png" alt="Google" />
+    <span>Continue with Google</span>
   </button>
-</form>
+
+  <div class="divider-with-text">
+    <span>or</span>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email address</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      class="full-width submit-btn"
+    >
+      Log in
+    </button>
+  </form>
+
+  <div class="divider-with-text">
+    <span>Not registered yet?</span>
+  </div>
+
+  <button
+    routerLink="/register"
+    mat-flat-button
+    type="button"
+    class="full-width create-account-btn"
+  >
+    Create an account
+  </button>
+
+  <div class="legal-text-content">
+    <p class="legal-text">
+      By logging in, you're confirming that you agree to our
+      <a href="#">privacy policy</a>, <a href="#">terms of use</a> and
+      <a href="#">cookie policy</a>.
+    </p>
+  </div>
+</mat-card>

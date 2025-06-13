@@ -2,22 +2,22 @@
   <h2>Create account</h2>
 
   <button
-    mat-stroked-button
-    color="primary"
     class="google-btn"
     (click)="loginWithGoogle()"
+    [disabled]="isLoggingIn"
   >
     <img src="../../assets/img/google-logo.png" alt="Google" />
-    Continue with Google
+    <span>Continue with Google</span>
   </button>
 
-  <mat-divider class="divider">or</mat-divider>
+  <div class="divider-with-text">
+    <span>or</span>
+  </div>
 
   <form [formGroup]="form" (ngSubmit)="register()">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Name</mat-label>
-      <input matInput />
-      <!-- formControlName="name" -->
+      <input matInput formControlName="name" />
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="full-width">
@@ -30,7 +30,13 @@
       <input matInput type="password" formControlName="password" />
     </mat-form-field>
 
-    <button mat-flat-button color="primary" type="submit" class="full-width">
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      class="full-width"
+      class="submit-btn"
+    >
       Create account
     </button>
   </form>
@@ -38,10 +44,11 @@
   <div class="login-link">
     Already have an account? <a routerLink="/login">Log in</a>
   </div>
-
-  <p class="legal-text">
-    By creating an account you agree to our
-    <a href="#">Terms and Conditions</a>. Please read our
-    <a href="#">Privacy Statement</a> and <a href="#">Cookie Policy</a>.
-  </p>
+  <div class="legal-text-content">
+    <p class="legal-text">
+      By creating an account you agree to our
+      <a href="#">Terms and Conditions</a>. Please read our
+      <a href="#">Privacy Statement</a> and <a href="#">Cookie Policy</a>.
+    </p>
+  </div>
 </mat-card>

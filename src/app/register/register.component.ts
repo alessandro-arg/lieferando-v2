@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -20,12 +20,16 @@ import { AuthService } from '../services/auth.service';
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
+    RouterLink,
   ],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  isLoggingIn = false;
+
   form = this.fb.group({
+    name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
@@ -45,8 +49,14 @@ export class RegisterComponent {
   }
 
   loginWithGoogle() {
-    this.auth.loginWithGoogle().then(() => {
-      this.router.navigate(['/dashboard']);
-    });
+    this.isLoggingIn = true;
+    this.auth
+      .loginWithGoogle()
+      .then(() => {
+        this.router.navigate(['/dashboard']);
+      })
+      .finally(() => {
+        this.isLoggingIn = false;
+      });
   }
 }
