@@ -102,6 +102,15 @@ mat-card {
     height: 40px;
     font-size: 18px;
     font-weight: 600;
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.65;
+      color: #7e7e7e;
+      background: #dcdcdc;
+      box-shadow: none;
+      text-shadow: none;
+    }
   }
 
   .login-link {

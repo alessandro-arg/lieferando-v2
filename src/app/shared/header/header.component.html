@@ -3,26 +3,28 @@
     <div class="logo">
       <img src="../../../assets/img/logo.png" alt="" />
     </div>
-    <div class="right">
-      <div class="language">
-        <button
-          mat-icon-button
-          matTooltip="Select language"
-          matTooltipPosition="left"
-          [matMenuTriggerFor]="languageMenu"
-          class="language-btn"
-        >
-          <mat-icon>language</mat-icon>
-        </button>
-        <mat-menu #languageMenu="matMenu" xPosition="before">
-          <button mat-menu-item>Deutsch</button>
-          <button mat-menu-item>English</button>
-        </mat-menu>
-      </div>
-      <div class="menu">
-        <button mat-icon-button class="menu-btn" (click)="openDialog()">
-          <mat-icon>menu</mat-icon>
-        </button>
+    <div *ngIf="!router.url.includes('/login')">
+      <div class="right">
+        <div class="language">
+          <button
+            mat-icon-button
+            matTooltip="Select language"
+            matTooltipPosition="left"
+            [matMenuTriggerFor]="languageMenu"
+            class="language-btn"
+          >
+            <mat-icon>language</mat-icon>
+          </button>
+          <mat-menu #languageMenu="matMenu" xPosition="before">
+            <button mat-menu-item>Deutsch</button>
+            <button mat-menu-item>English</button>
+          </mat-menu>
+        </div>
+        <div class="menu">
+          <button mat-icon-button class="menu-btn" (click)="openDialog()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>

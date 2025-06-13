@@ -1,15 +1,17 @@
 <mat-toolbar color="primary" class="footer-toolbar" role="contentinfo">
   <div class="footer-content">
-    <div class="footer-links">
-      <a mat-button>Ein Restaurant empfehlen</a>
-      <a mat-button>Ein Restaurant anmelden</a>
-      <a mat-button>Jobs</a>
-      <a mat-button>AGB</a>
-      <a mat-button>Datenschutzerklärung</a>
-      <a mat-button>Impressum</a>
-      <a mat-button>Verwendung von Cookies</a>
-      <a mat-button>Bug Bounty</a>
-      <a mat-button>Hotline</a>
+    <div *ngIf="!router.url.includes('/login')">
+      <div class="footer-links">
+        <a mat-button>Ein Restaurant empfehlen</a>
+        <a mat-button>Ein Restaurant anmelden</a>
+        <a mat-button>Jobs</a>
+        <a mat-button>AGB</a>
+        <a mat-button>Datenschutzerklärung</a>
+        <a mat-button>Impressum</a>
+        <a mat-button>Verwendung von Cookies</a>
+        <a mat-button>Bug Bounty</a>
+        <a mat-button>Hotline</a>
+      </div>
     </div>
     <mat-divider></mat-divider>
     <div class="footer-bottom">
