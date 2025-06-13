@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<div class="dashboard-wrapper">
+  <div class="restaurant-scroll-area">
+    <app-restaurant></app-restaurant>
+  </div>
+
+  <div
+    class="cart-wrapper"
+    [ngClass]="{
+      fixed: isFixed && !isFooterVisible,
+      'at-footer': isFooterVisible
+    }"
+  >
+    <app-cart></app-cart>
+  </div>
+</div>
