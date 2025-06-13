@@ -1,21 +1,47 @@
-<form [formGroup]="form" (ngSubmit)="register()">
-  <mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input matInput />
-  </mat-form-field>
+<mat-card class="register-card">
+  <h2>Create account</h2>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input matInput type="password" formControlName="password" />
-  </mat-form-field>
-
-  <button mat-raised-button color="primary" type="submit">Register</button>
-  <button mat-stroked-button (click)="loginWithGoogle()">
-    Register with Google
+  <button
+    mat-stroked-button
+    color="primary"
+    class="google-btn"
+    (click)="loginWithGoogle()"
+  >
+    <img src="../../assets/img/google-logo.png" alt="Google" />
+    Continue with Google
   </button>
-</form>
+
+  <mat-divider class="divider">or</mat-divider>
+
+  <form [formGroup]="form" (ngSubmit)="register()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput />
+      <!-- formControlName="name" -->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email address</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit" class="full-width">
+      Create account
+    </button>
+  </form>
+
+  <div class="login-link">
+    Already have an account? <a routerLink="/login">Log in</a>
+  </div>
+
+  <p class="legal-text">
+    By creating an account you agree to our
+    <a href="#">Terms and Conditions</a>. Please read our
+    <a href="#">Privacy Statement</a> and <a href="#">Cookie Policy</a>.
+  </p>
+</mat-card>
