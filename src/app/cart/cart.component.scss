@@ -1,0 +1,36 @@
+.basket-content {
+  height: fit-content;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 80px 16px;
+
+  img {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
