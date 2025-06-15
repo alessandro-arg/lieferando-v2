@@ -1,14 +1,21 @@
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
 .basket-content {
   height: fit-content;
-  padding: 8px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .header {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,8 +36,76 @@
   }
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  width: 100%;
+}
+
+.toggle-switch {
+  position: relative;
+  background: #f3f1ed;
+  border-radius: 999px;
+  display: flex;
+  width: 100%;
+  padding: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  .slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 8px);
+    height: calc(100% - 8px);
+    background: white;
+    border-radius: 999px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 0;
+  }
+
+  &.collection .slider {
+    left: calc(50% + 4px);
+  }
+
+  .toggle-btn {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #333;
+    padding: 0 0.5rem;
+
+    .icon {
+      font-size: 20px;
+    }
+
+    .label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+      gap: 8px;
+
+      strong {
+        font-weight: 600;
+      }
+
+      small {
+        color: #666;
+        font-size: 12px;
+      }
+    }
+  }
 }

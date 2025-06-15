@@ -1,9 +1,27 @@
 <div class="basket-content">
   <div class="header">
     <h2>Basket</h2>
-    <div class="buttons">
-      <button>Delivery</button>
-      <button>Collection</button>
+    <div class="toggle-container">
+      <div
+        class="toggle-switch"
+        [class.collection]="selected() === 'collection'"
+      >
+        <div class="slider"></div>
+        <button class="toggle-btn" (click)="setMode('delivery')">
+          <span class="icon">🚴‍♂️</span>
+          <span class="label">
+            <strong>Delivery</strong>
+            <small>from 12:30</small>
+          </span>
+        </button>
+        <button class="toggle-btn" (click)="setMode('collection')">
+          <span class="icon">🛍️</span>
+          <span class="label">
+            <strong>Collection</strong>
+            <small>from 11:30</small>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
   <div class="empty-cart">
