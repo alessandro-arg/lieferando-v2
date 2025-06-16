@@ -8,17 +8,25 @@
       >
         <div class="slider"></div>
         <button class="toggle-btn" (click)="setMode('delivery')">
-          <span class="icon">🚴‍♂️</span>
+          <span
+            class="material-icons icon"
+            [ngClass]="{ active: selected() === 'delivery' }"
+            >delivery_dining</span
+          >
           <span class="label">
             <strong>Delivery</strong>
-            <small>from 12:30</small>
+            <small>20-45 min</small>
           </span>
         </button>
         <button class="toggle-btn" (click)="setMode('collection')">
-          <span class="icon">🛍️</span>
+          <span
+            class="material-icons icon"
+            [ngClass]="{ active: selected() === 'collection' }"
+            >storefront</span
+          >
           <span class="label">
             <strong>Collection</strong>
-            <small>from 11:30</small>
+            <small>15 min</small>
           </span>
         </button>
       </div>
@@ -26,8 +34,10 @@
   </div>
   <div class="empty-cart">
     <img src="../../assets/img/basket.png" alt="" />
-    <h2>Fill your basket</h2>
-    <p>Your basket is empty</p>
+    <div style="align-items: center; display: flex; flex-direction: column">
+      <h2>Fill your basket</h2>
+      <p>Your basket is empty</p>
+    </div>
   </div>
   <div class="cart-items"></div>
   <div class="cart-summary"></div>
