@@ -27,17 +27,11 @@
     </div>
   </div>
 
-  <div class="discount-banner">
-    <button mat-flat-button color="accent">
-      25% off any: Minus 25% Montag
-    </button>
-  </div>
-
   <div class="search-bar">
     <mat-form-field appearance="outline" class="search-field">
+      <mat-icon matSuffix>search</mat-icon>
       <mat-label>Search in Wagner Restaurant & Lieferservice</mat-label>
       <input matInput type="text" />
-      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
 
@@ -51,4 +45,42 @@
     <mat-tab label="Wunschpizza"></mat-tab>
     <mat-tab label="Amerikanische"></mat-tab>
   </mat-tab-group>
+
+  <div class="highlights-section" *ngIf="highlightsCategory">
+    <h2>Highlights</h2>
+    <div class="highlights-scroll">
+      <div
+        class="highlight-card"
+        *ngFor="let item of highlightsCategory.products"
+      >
+        <div class="card-title">{{ item.title }}</div>
+        <div class="card-price">
+          {{ item.price | currency : "EUR" : "symbol" : "1.2-2" }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="category-section"
+    *ngFor="let category of categoriesWithoutHighlights"
+  >
+    <h2>{{ category.name }}</h2>
+    <div *ngFor="let item of category.products" class="product-card">
+      <div class="product-title">{{ item.title }}</div>
+      <div class="product-price">
+        <span *ngIf="item.fromPrice">from </span>
+        {{ item.price | currency : "EUR" : "symbol" : "1.2-2" }}
+        <span *ngIf="item.originalPrice" class="original-price">
+          {{ item.originalPrice | currency : "EUR" : "symbol" : "1.2-2" }}
+        </span>
+      </div>
+      <ul *ngIf="item.description?.length" class="product-description">
+        <li *ngFor="let line of item.description">{{ line }}</li>
+      </ul>
+      <button mat-icon-button color="primary" class="add-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
