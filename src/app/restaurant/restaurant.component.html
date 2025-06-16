@@ -1,1 +1,54 @@
-<p>restaurant works!</p>
+<div class="restaurant-container">
+  <div class="hero">
+    <img
+      src="../../assets/img/restaurant-hero.png"
+      alt="Restaurant Hero"
+      class="hero-img"
+    />
+    <div class="restaurant-info">
+      <img src="../../assets/img/restaurant-logo.png" alt="Logo" class="logo" />
+      <h1>Wagner Restaurant & Lieferservice</h1>
+      <div class="meta">
+        <span class="rating">
+          <mat-icon color="warn">star</mat-icon>
+          4,4 (2.300+)
+        </span>
+        <span class="min-order">Min. 25,00 €</span>
+        <span class="delivery">
+          <mat-icon>pedal_bike</mat-icon>
+          3,50 €
+        </span>
+      </div>
+      <div class="actions">
+        <button mat-icon-button matTooltip="About Us">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="discount-banner">
+    <button mat-flat-button color="accent">
+      25% off any: Minus 25% Montag
+    </button>
+  </div>
+
+  <div class="search-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search in Wagner Restaurant & Lieferservice</mat-label>
+      <input matInput type="text" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Highlights"></mat-tab>
+    <mat-tab label="Minus 25% Montag"></mat-tab>
+    <mat-tab label="Angebote"></mat-tab>
+    <mat-tab label="Suppen"></mat-tab>
+    <mat-tab label="Salate"></mat-tab>
+    <mat-tab label="Pizza"></mat-tab>
+    <mat-tab label="Wunschpizza"></mat-tab>
+    <mat-tab label="Amerikanische"></mat-tab>
+  </mat-tab-group>
+</div>

@@ -5,9 +5,11 @@
 
   <div
     class="cart-wrapper"
+    #cart
     [ngClass]="{
-      fixed: isFixed && !isFooterVisible,
-      'at-footer': isFooterVisible
+      default: isDefault,
+      fixed: isFixed,
+      'at-footer': isAtFooter
     }"
   >
     <app-cart></app-cart>
