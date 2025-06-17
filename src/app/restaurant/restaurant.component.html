@@ -5,54 +5,65 @@
       alt="Restaurant Hero"
       class="hero-img"
     />
-    <div class="restaurant-info">
-      <img src="../../assets/img/restaurant-logo.png" alt="Logo" class="logo" />
-      <h1>Wagner Restaurant & Lieferservice</h1>
-      <div class="meta">
-        <span class="rating">
-          <mat-icon color="warn">star</mat-icon>
-          4,4 (2.300+)
-        </span>
-        <span class="min-order">Min. 25,00 €</span>
-        <span class="delivery">
-          <mat-icon>pedal_bike</mat-icon>
-          3,50 €
-        </span>
-        <button mat-icon-button matTooltip="About Us">
-          <mat-icon>info</mat-icon>
-        </button>
+    <div class="info-wrapper">
+      <div class="info-container">
+        <div class="restaurant-info">
+          <img
+            src="../../assets/img/restaurant-logo.png"
+            alt="Logo"
+            class="floating-logo"
+          />
+          <h1>Alessandro alla Partenopea</h1>
+          <div class="meta">
+            <span class="rating">
+              <mat-icon color="warn">star</mat-icon>
+              4,8 (2.300+)
+            </span>
+            <span class="min-order">Min. 25,00 €</span>
+            <span class="delivery">
+              <mat-icon>pedal_bike</mat-icon>
+              3,50 €
+            </span>
+            <button mat-icon-button matTooltip="About Us">
+              <mat-icon>info</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="search-bar">
-    <mat-form-field appearance="outline" class="search-field">
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-label>Search in Wagner Restaurant & Lieferservice</mat-label>
+    <mat-form-field appearance="outline" class="search-field custom-field">
+      <mat-icon matPrefix class="orange-icon">search</mat-icon>
+      <mat-label>Search in Alessandro alla Partenopea </mat-label>
       <input matInput type="text" />
     </mat-form-field>
   </div>
 
   <mat-tab-group>
     <mat-tab label="Highlights"></mat-tab>
-    <mat-tab label="Angebote"></mat-tab>
-    <mat-tab label="Suppen"></mat-tab>
-    <mat-tab label="Salate"></mat-tab>
+    <mat-tab label="Offers"></mat-tab>
+    <mat-tab label="Sopus"></mat-tab>
+    <mat-tab label="Salads"></mat-tab>
     <mat-tab label="Pizza"></mat-tab>
-    <mat-tab label="Wunschpizza"></mat-tab>
-    <mat-tab label="Amerikanische"></mat-tab>
   </mat-tab-group>
 
   <div class="highlights-section" *ngIf="highlightsCategory">
-    <h2>Highlights</h2>
+    <h2>{{ highlightsCategory.name }}</h2>
     <div class="highlights-scroll">
       <div
         class="highlight-card"
         *ngFor="let item of highlightsCategory.products"
       >
+        <div class="card-category">{{ item.category }}</div>
         <div class="card-title">{{ item.title }}</div>
-        <div class="card-price">
-          {{ item.price | currency : "EUR" : "symbol" : "1.2-2" }}
+        <button mat-icon-button class="add-button">
+          <mat-icon class="orange-icon">add</mat-icon>
+        </button>
+        <div class="card-bottom">
+          <a class="item-info">Item info</a>
+          <div class="card-price">{{ item.price }} €</div>
         </div>
       </div>
     </div>
@@ -64,19 +75,14 @@
   >
     <h2>{{ category.name }}</h2>
     <div *ngFor="let item of category.products" class="product-card">
-      <div class="product-title">{{ item.title }}</div>
-      <div class="product-price">
-        <span *ngIf="item.fromPrice">from </span>
-        {{ item.price | currency : "EUR" : "symbol" : "1.2-2" }}
-        <span *ngIf="item.originalPrice" class="original-price">
-          {{ item.originalPrice | currency : "EUR" : "symbol" : "1.2-2" }}
-        </span>
+      <div class="product-title">
+        {{ item.title }}
+        <a>Item info</a>
       </div>
-      <ul *ngIf="item.description?.length" class="product-description">
-        <li *ngFor="let line of item.description">{{ line }}</li>
-      </ul>
-      <button mat-icon-button color="primary" class="add-button">
-        <mat-icon>add</mat-icon>
+      <div class="product-price">{{ item.price }} €</div>
+      <span *ngFor="let line of item.description">{{ line }}</span>
+      <button mat-icon-button class="add-button">
+        <mat-icon class="orange-icon">add</mat-icon>
       </button>
     </div>
   </div>

@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 
 interface Product {
+  category?: string;
   title: string;
   price: number;
   fromPrice?: boolean;
@@ -45,14 +46,37 @@ export class RestaurantComponent {
       name: 'Highlights',
       horizontalScroll: true,
       products: [
-        { title: 'Angebot 1', price: 28.5 },
-        { title: 'Chickenburger Menü', price: 12.2 },
-        { title: 'Wunschpizza', price: 12.5, fromPrice: true },
-        { title: 'Cordon Bleu', price: 14.9 },
+        {
+          category: 'Meat',
+          title: 'Gyros Teller',
+          price: 11.99,
+          description: ['Mit Tzatziki, Pommes, Salat'],
+        },
+        {
+          category: 'Meat',
+          title: 'Gyros Teller',
+          price: 11.99,
+          description: ['Mit Tzatziki, Pommes, Salat'],
+        },
+        {
+          category: 'Meat',
+          title: 'Gyros Teller',
+          price: 11.99,
+          description: ['Mit Tzatziki, Pommes, Salat'],
+        },
+        {
+          category: 'Meat',
+          title: 'Gyros Teller',
+          price: 11.99,
+          description: ['Mit Tzatziki, Pommes, Salat'],
+        },
+        { title: 'Chickenburger Menü', price: 12.2, category: 'Burger' },
+        { title: 'Wunschpizza', price: 12.5, category: 'Pizza' },
+        { title: 'Cordon Bleu', price: 14.9, category: 'Meat' },
       ],
     },
     {
-      name: 'Angebote',
+      name: 'Offers',
       products: [
         {
           title: 'Angebot 1',
@@ -62,12 +86,12 @@ export class RestaurantComponent {
       ],
     },
     {
-      name: 'Suppen',
+      name: 'Sopus',
       products: [
         {
           title: 'Gyros Teller',
           price: 11.99,
-          description: ['Mit Tzatziki', 'Pommes', 'Salat'],
+          description: ['Mit Tzatziki, Pommes, Salat'],
         },
         {
           title: 'Schnitzel Wiener Art',
@@ -76,10 +100,8 @@ export class RestaurantComponent {
         },
       ],
     },
-    { name: 'Salate', products: [] },
+    { name: 'Salads', products: [] },
     { name: 'Pizza', products: [] },
-    { name: 'Wunschpizza', products: [] },
-    { name: 'Amerikanische', products: [] },
   ];
 
   get highlightsCategory(): Category | undefined {

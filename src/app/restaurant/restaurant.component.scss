@@ -16,24 +16,48 @@
     object-fit: cover;
   }
 
-  .restaurant-info {
+  .info-wrapper {
     position: absolute;
     bottom: 20px;
-    left: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 16px;
-    border-radius: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
 
-    .logo {
-      width: 100px;
+    .info-container {
+      max-width: 960px;
+      width: 100%;
+      pointer-events: auto;
+      display: flex;
+      justify-content: flex-start;
+      margin: 0 auto;
+    }
+  }
+
+  .restaurant-info {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 16px 16px;
+    border-radius: 10px;
+    position: relative;
+
+    .floating-logo {
+      position: absolute;
+      top: -60px;
+      left: 20px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      height: auto;
-      margin-bottom: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      border: 3px solid white;
+      background-color: white;
+      object-fit: cover;
     }
 
     h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 28px;
+      font-weight: 800;
     }
 
     .meta {
@@ -49,6 +73,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        color: #555555;
       }
     }
 
@@ -79,14 +104,22 @@
   }
 }
 
+.orange-icon {
+  color: rgb(255, 136, 0);
+}
+
 mat-tab-group {
   margin: 0 auto;
   max-width: 960px;
   width: 100%;
   border-bottom: 1px solid #ddd;
+  color: rgb(255, 136, 0);
 }
 
 .highlights-section {
+  width: 100%;
+  max-width: 960px;
+  margin: 16px auto;
   padding: 16px 0;
 
   h2 {
@@ -96,42 +129,89 @@ mat-tab-group {
   .highlights-scroll {
     display: flex;
     overflow-x: auto;
-    gap: 16px;
+    gap: 8px;
     padding-bottom: 8px;
     scrollbar-width: thin;
   }
 
   .highlight-card {
     flex: 0 0 auto;
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 120px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+      background-color: #ebebeb;
+    }
+
+    .card-category {
+      font-size: 12px;
+      font-weight: 400;
+      color: #5e5e5e;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+    }
 
     .card-title {
-      font-weight: 600;
-      margin-bottom: 4px;
+      max-width: 150px;
+      margin-top: 5px;
+      font-weight: 500;
+      font-size: 16px;
+      position: absolute;
+      top: 28px;
+      left: 12px;
+      right: 32px;
+      text-align: left;
+    }
+
+    .add-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      border: solid 1px rgba(201, 201, 201, 0.651);
+    }
+
+    .card-bottom {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .item-info {
+        font-size: 13px;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     .card-price {
       font-size: 14px;
-      color: #555;
+      font-weight: 500;
     }
   }
 }
 
 .category-section {
-  margin-top: 32px;
+  width: 100%;
+  max-width: 960px;
+  margin: 16px auto;
 
   h2 {
     margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 800;
   }
 
   .product-card {
@@ -145,28 +225,36 @@ mat-tab-group {
 
   .product-title {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 800;
+
+    a {
+      font-size: 14px;
+      color: #555555;
+      font-weight: 500;
+      margin-left: 10px;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   .product-price {
-    font-weight: 600;
+    font-weight: 500;
     margin: 8px 0;
-  }
-
-  .original-price {
-    text-decoration: line-through;
-    color: gray;
-    margin-left: 8px;
   }
 
   .product-description {
     margin: 0 0 20px;
-    padding-left: 20px;
+    list-style: none;
   }
 
   .add-button {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    top: 12px;
+    right: 20px;
+    border: 1px solid rgba(201, 201, 201, 0.651);
   }
 }
