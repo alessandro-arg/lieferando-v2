@@ -51,21 +51,42 @@
 
   <div class="highlights-section" *ngIf="highlightsCategory">
     <h2>{{ highlightsCategory.name }}</h2>
-    <div class="highlights-scroll">
-      <div
-        class="highlight-card"
-        *ngFor="let item of highlightsCategory.products"
+
+    <div class="scroll-container">
+      <button
+        class="scroll-arrow left"
+        [class.visible]="showLeftArrow"
+        [class.hidden]="!showLeftArrow"
+        (click)="scrollLeft()"
       >
-        <div class="card-category">{{ item.category }}</div>
-        <div class="card-title">{{ item.title }}</div>
-        <button mat-icon-button class="add-button">
-          <mat-icon class="orange-icon">add</mat-icon>
-        </button>
-        <div class="card-bottom">
-          <a class="item-info">Item info</a>
-          <div class="card-price">{{ item.price }} €</div>
+        <mat-icon class="orange-icon">arrow_back_ios</mat-icon>
+      </button>
+
+      <div class="highlights-scroll" #scrollContainer (scroll)="checkScroll()">
+        <div
+          class="highlight-card"
+          *ngFor="let item of highlightsCategory.products"
+        >
+          <div class="card-category">{{ item.category }}</div>
+          <div class="card-title">{{ item.title }}</div>
+          <button mat-icon-button class="add-button">
+            <mat-icon class="orange-icon">add</mat-icon>
+          </button>
+          <div class="card-bottom">
+            <a class="item-info">Item info</a>
+            <div class="card-price">{{ item.price }} €</div>
+          </div>
         </div>
       </div>
+
+      <button
+        class="scroll-arrow right"
+        [class.visible]="showRightArrow"
+        [class.hidden]="!showRightArrow"
+        (click)="scrollRight()"
+      >
+        <mat-icon class="orange-icon">arrow_forward_ios</mat-icon>
+      </button>
     </div>
   </div>
 

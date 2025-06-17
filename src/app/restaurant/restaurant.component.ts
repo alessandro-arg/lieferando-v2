@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgFor, NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,11 +9,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 
 interface Product {
-  category?: string;
+  category: string;
   title: string;
   price: number;
-  fromPrice?: boolean;
-  originalPrice?: number;
   description?: string[];
 }
 
@@ -40,7 +38,36 @@ interface Category {
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss',
 })
-export class RestaurantComponent {
+export class RestaurantComponent implements AfterViewInit {
+  @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef;
+  showLeftArrow = false;
+  showRightArrow = true;
+
+  ngAfterViewInit() {
+    setTimeout(() => this.checkScroll(), 0);
+  }
+
+  scrollLeft() {
+    this.scrollContainer.nativeElement.scrollBy({
+      left: -200,
+      behavior: 'smooth',
+    });
+  }
+
+  scrollRight() {
+    this.scrollContainer.nativeElement.scrollBy({
+      left: 200,
+      behavior: 'smooth',
+    });
+  }
+
+  checkScroll() {
+    const container = this.scrollContainer.nativeElement;
+    this.showLeftArrow = container.scrollLeft > 0;
+    this.showRightArrow =
+      container.scrollLeft + container.clientWidth < container.scrollWidth;
+  }
+
   categories: Category[] = [
     {
       name: 'Highlights',
@@ -79,6 +106,7 @@ export class RestaurantComponent {
       name: 'Offers',
       products: [
         {
+          category: 'Offers',
           title: 'Angebot 1',
           price: 28.5,
           description: ['1 Familienpizza mit 4 Zutaten nach Wahl'],
@@ -89,11 +117,13 @@ export class RestaurantComponent {
       name: 'Sopus',
       products: [
         {
+          category: 'Soups',
           title: 'Gyros Teller',
           price: 11.99,
           description: ['Mit Tzatziki, Pommes, Salat'],
         },
         {
+          category: 'Soups',
           title: 'Schnitzel Wiener Art',
           price: 12.49,
           description: ['Schwein', 'Pommes', 'Zitrone'],

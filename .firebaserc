@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "lieferando-v2-b6da8": {
+      "hosting": {
+        "lieferando-v2": [
+          "lieferando-v2-b6da8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "lieferando-v2-b6da8"
+  }
+}

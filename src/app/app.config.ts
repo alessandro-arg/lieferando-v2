@@ -9,6 +9,7 @@ import { initializeApp } from '@angular/fire/app';
 import { provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,9 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     importProvidersFrom(
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideAuth(() => getAuth())
-    ), provideAnimationsAsync(),
+      provideAuth(() => getAuth()),
+      provideFirestore(() => getFirestore())
+    ),
+    provideAnimationsAsync(),
   ],
 };
