@@ -57,10 +57,17 @@ export class RestaurantComponent implements AfterViewInit, OnInit {
     'Sopus',
     'Salads',
     'Pizza',
+    'Sides',
+    'Burgers',
+    'Desserts',
+    'Drinks',
   ];
+  sectionOffsets: { id: string; offsetTop: number }[] = [];
+  currentActiveTab: string | null = null;
 
   showLeftArrow = false;
   showRightArrow = true;
+
   isStuck = false;
 
   constructor(private firestore: Firestore) {}
@@ -88,6 +95,19 @@ export class RestaurantComponent implements AfterViewInit, OnInit {
           (cat) => cat.id === 'highlights'
         );
         this.highlights = highlightsDoc?.products || [];
+
+        this.categories = categoriesArray
+          .filter((cat) => cat.id !== 'highlights')
+          .sort((a, b) => {
+            const indexA = this.tabLabels.findIndex(
+              (label) => this.sanitizeId(label) === a.id
+            );
+            const indexB = this.tabLabels.findIndex(
+              (label) => this.sanitizeId(label) === b.id
+            );
+            return indexA - indexB;
+          });
+
         setTimeout(() => this.checkScroll(), 0);
       })
       .catch((error) => {
@@ -97,28 +117,6 @@ export class RestaurantComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     setTimeout(() => this.checkScroll(), 0);
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    let currentIndex = 0;
-
-    for (let i = 0; i < this.tabLabels.length; i++) {
-      const id = this.sanitizeId(this.tabLabels[i]);
-      const el = document.getElementById(id);
-
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 120 && rect.bottom >= 120) {
-          currentIndex = i;
-          break;
-        }
-      }
-    }
-
-    if (this.tabGroup.selectedIndex !== currentIndex) {
-      this.tabGroup.selectedIndex = currentIndex;
-    }
   }
 
   @HostListener('window:scroll', [])
