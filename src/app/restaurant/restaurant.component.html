@@ -1,5 +1,5 @@
 <div class="restaurant-container">
-  <div class="hero">
+  <div class="hero" id="highlights">
     <img
       src="../../assets/img/restaurant-hero.png"
       alt="Restaurant Hero"
@@ -33,21 +33,19 @@
     </div>
   </div>
 
-  <div class="search-bar">
-    <mat-form-field appearance="outline" class="search-field custom-field">
-      <mat-icon matPrefix class="orange-icon">search</mat-icon>
-      <mat-label>Search in Alessandro alla Partenopea </mat-label>
-      <input matInput type="text" />
-    </mat-form-field>
-  </div>
+  <div class="sticky-wrapper" [class.stuck]="isStuck">
+    <div class="search-bar">
+      <mat-form-field appearance="outline" class="search-field custom-field">
+        <mat-icon matPrefix class="orange-icon">search</mat-icon>
+        <mat-label>Search in Alessandro alla Partenopea </mat-label>
+        <input matInput type="text" />
+      </mat-form-field>
+    </div>
 
-  <mat-tab-group>
-    <mat-tab label="Highlights"></mat-tab>
-    <mat-tab label="Offers"></mat-tab>
-    <mat-tab label="Sopus"></mat-tab>
-    <mat-tab label="Salads"></mat-tab>
-    <mat-tab label="Pizza"></mat-tab>
-  </mat-tab-group>
+    <mat-tab-group (selectedTabChange)="onTabChange($event)">
+      <mat-tab *ngFor="let label of tabLabels" [label]="label"></mat-tab>
+    </mat-tab-group>
+  </div>
 
   <div class="highlights-section">
     <h2>Highlights</h2>
@@ -87,7 +85,11 @@
     </div>
   </div>
 
-  <div class="category-section" *ngFor="let category of categories">
+  <div
+    class="category-section"
+    [id]="sanitizeId(category.name)"
+    *ngFor="let category of categories"
+  >
     <h2>{{ category.name }}</h2>
     <div *ngFor="let item of category.products" class="product-card">
       <div class="product-title">
@@ -95,7 +97,7 @@
         <a>Item info</a>
       </div>
       <div class="product-price">{{ item.price }} €</div>
-      <span *ngFor="let line of item.description">{{ line }}</span>
+      <span>{{ item.description }}</span>
       <button mat-icon-button class="add-button">
         <mat-icon class="orange-icon">add</mat-icon>
       </button>
