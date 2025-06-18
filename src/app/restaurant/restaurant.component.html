@@ -49,8 +49,8 @@
     <mat-tab label="Pizza"></mat-tab>
   </mat-tab-group>
 
-  <div class="highlights-section" *ngIf="highlightsCategory">
-    <h2>{{ highlightsCategory.name }}</h2>
+  <div class="highlights-section">
+    <h2>Highlights</h2>
 
     <div class="scroll-container">
       <button
@@ -63,10 +63,7 @@
       </button>
 
       <div class="highlights-scroll" #scrollContainer (scroll)="checkScroll()">
-        <div
-          class="highlight-card"
-          *ngFor="let item of highlightsCategory.products"
-        >
+        <div class="highlight-card" *ngFor="let item of highlights">
           <div class="card-category">{{ item.category }}</div>
           <div class="card-title">{{ item.title }}</div>
           <button mat-icon-button class="add-button">
@@ -90,10 +87,7 @@
     </div>
   </div>
 
-  <div
-    class="category-section"
-    *ngFor="let category of categoriesWithoutHighlights"
-  >
+  <div class="category-section" *ngFor="let category of categories">
     <h2>{{ category.name }}</h2>
     <div *ngFor="let item of category.products" class="product-card">
       <div class="product-title">
