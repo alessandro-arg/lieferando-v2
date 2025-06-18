@@ -71,6 +71,7 @@ export class RestaurantComponent implements AfterViewInit, OnInit {
           (cat) => cat.id === 'highlights'
         );
         this.highlights = highlightsDoc?.products || [];
+        setTimeout(() => this.checkScroll(), 0);
       })
       .catch((error) => {
         console.error('Error getting categories:', error);
